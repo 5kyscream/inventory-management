@@ -1,0 +1,204 @@
+:root {
+    --yellow: #f7d900;
+    --black: #1a1a1a;
+    --white: #ffffff;
+    --gray: #f0f0f0;
+    --red: #e74c3c;
+    --green: #2ecc71;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--yellow);
+    color: var(--black);
+    font-size: 16px;
+}
+
+/* --- Navigation --- */
+nav {
+    background-color: var(--black);
+    color: var(--yellow);
+    padding: 1rem 2rem;
+    border-bottom: 4px solid var(--black);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--yellow);
+    text-decoration: none;
+}
+
+.nav-links a {
+    color: var(--yellow);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--white);
+}
+
+.nav-logout {
+    background-color: var(--yellow);
+    color: var(--black);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+}
+
+/* --- Main Container --- */
+.container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--white);
+    border: 4px solid var(--black);
+    box-shadow: 8px 8px 0 var(--black);
+}
+
+h1, h2, h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-top: 0;
+}
+
+/* --- Forms --- */
+.auth-form {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 4px solid var(--black);
+}
+
+.auth-form p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.form-container {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: var(--gray);
+     border: 2px solid var(--black);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+form input, form select {
+    padding: 0.75rem;
+    border: 2px solid var(--black);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn {
+    background-color: var(--black);
+    color: var(--yellow);
+    border: 2px solid var(--black);
+    padding: 0.75rem 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--yellow);
+    color: var(--black);
+}
+
+
+/* --- Tables --- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+}
+
+table th, table td {
+    border: 2px solid var(--black);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+table th {
+    background-color: var(--black);
+    color: var(--yellow);
+    font-weight: 700;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: var(--gray);
+}
+
+
+/* --- Flash Messages --- */
+.flash-messages {
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.flash {
+    list-style: none;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--black);
+    font-weight: 700;
+}
+
+.flash.success {
+    background-color: var(--green);
+    color: var(--black);
+}
+
+.flash.error {
+    background-color: var(--red);
+    color: var(--white);
+}
+
+/* Styles for new JS features */
+.table-search {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--black);
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+.btn-edit {
+    background-color: var(--yellow);
+    color: var(--black);
+    border: 2px solid var(--black);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-edit:hover {
+    background-color: var(--black);
+    color: var(--yellow);
+}

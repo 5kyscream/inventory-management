@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Manage Users</h2>
+    <div class="form-container">
+        <form method="post">
+            <h3>Add New User</h3>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <select name="role" required>
+                <option value="staff">Staff</option>
+                <option value="sales">Sales</option>
+                <option value="manager">Manager</option>
+                <option value="admin">Admin</option>
+            </select>
+            <button type="submit" class="btn">Add User</button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Manage Items</h2>
+    <div class="form-container">
+        <form method="post" id="item-form">
+            <h3>Add / Update Item</h3>
+            <input type="text" name="sku" placeholder="SKU" required>
+            <input type="text" name="name" placeholder="Item Name" required>
+            <input type="text" name="description" placeholder="Description">
+            <input type="text" name="category" placeholder="Category">
+            <input type="date" name="expiration_date" placeholder="Expiration Date">
+            <div class="form-actions">
+                <button type="submit" name="action" value="add" class="btn">Add Item</button>
+                <button type="submit" name="action" value="update" class="btn">Update Item</button>
+            </div>
+        </form>
+    </div>
+
+    <h2>Item List</h2>
+    <input type="text" id="item-search" class="table-search" placeholder="Search items...">
+    <table id="items-table">
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Expiration Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+            <tr
+                data-sku="{{ item[0] }}"
+                data-name="{{ item[1] }}"
+                data-description="{{ item[2] }}"
+                data-category="{{ item[3] }}"
+                data-expiration_date="{{ item[4] }}">
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+                <td>{{ item[2] }}</td>
+                <td>{{ item[3] }}</td>
+                <td>{{ item[4] }}</td>
+                <td><button class="btn-edit" data-form="item-form">Edit</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

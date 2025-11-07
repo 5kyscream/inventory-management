@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Manage Orders</h2>
+    <div class="form-container">
+        <form method="post" id="order-form">
+            <h3>Add / Update Order</h3>
+            <input type="hidden" name="order_id">
+            <select name="type" required>
+                <option value="sales">Sales Order</option>
+                <option value="purchase">Purchase Order</option>
+            </select>
+            <select name="sku" required>
+                 <option value="" disabled selected>Select an Item SKU</option>
+                 {% for item in items %}
+                    <option value="{{ item[0] }}">{{ item[0] }} - {{ item[1] }}</option>
+                {% endfor %}
+            </select>
+            <input type="number" name="quantity" placeholder="Quantity" required>
+            <select name="status" required>
+                <option value="pending">Pending</option>
+                <option value="shipped">Shipped</option>
+                <option value="received">Received</option>
+            </select>
+            <div class="form-actions">
+                <button type="submit" name="action" value="add" class="btn">Add Order</button>
+                <p>To update, click "Edit" on a row below.</p>
+                <button type="submit" name="action" value="update" class="btn">Update Order</button>
+            </div>
+        </form>
+    </div>
+
+    <h2>Order History</h2>
+    <input type="text" id="order-search" class="table-search" placeholder="Search orders...">
+    <table id="orders-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>SKU</th>
+                <th>Item Name</th>
+                <th>Quantity</th>
+                <th>Status</th>
+                <th>Created At</th>
+                <th>User</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr
+                data-order_id="{{ order[0] }}"
+                data-type="{{ order[1] }}"
+                data-sku="{{ order[2] }}"
+                data-quantity="{{ order[4] }}"
+                data-status="{{ order[5] }}">
+                <td>{{ order[0] }}</td>
+                <td>{{ order[1] }}</td>
+                <td>{{ order[2] }}</td>
+                <td>{{ order[3] }}</td>
+                <td>{{ order[4] }}</td>
+                <td>{{ order[5] }}</td>
+                <td>{{ order[6] }}</td>
+                <td>{{ order[8] }}</td>
+                <td><button class="btn-edit" data-form="order-form">Edit</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

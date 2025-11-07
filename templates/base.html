@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="{{ url_for('dashboard') }}" class="logo">IMS 📦</a>
+            <div class="nav-links">
+                {% if 'user_id' in session %}
+                    {% if session['role'] in ['admin', 'manager'] %}
+                        <a href="{{ url_for('items') }}">ITEMS</a>
+                    {% endif %}
+                    {% if session['role'] in ['admin', 'manager', 'staff'] %}
+                        <a href="{{ url_for('stock') }}">STOCK</a>
+                    {% endif %}
+                    <a href="{{ url_for('orders') }}">ORDERS</a>
+                    {% if session['role'] in ['admin', 'manager'] %}
+                        <a href="{{ url_for('reports') }}">REPORTS</a>
+                    {% endif %}
+                    {% if session['role'] == 'admin' %}
+                        <a href="{{ url_for('users') }}">USERS</a>
+                    {% endif %}
+                    <a href="{{ url_for('logout') }}" class="nav-logout">LOG OUT</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,14 @@
+[build]
+  command = "pip install -r requirements.txt"
+  functions = "functions" # This directory is created by Netlify during build
+  publish = "static"
+
+[[redirects]]
+  from = "/templates/*"
+  to = "/static/templates/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
